@@ -32,28 +32,54 @@ public class Ejercicio03 {
         // TODO code application logic here
         Scanner leer = new Scanner(System.in);
         AlumnoServicio as = new AlumnoServicio();
-        ArrayList<Alumno> alumnos = new ArrayList<>();
+        
         
         do {            
-            alumnos.add(as.crearAlumno());
+            as.crearAlumno();
             System.out.println("quiere crear otro registro de alumno");
             if(leer.next().equals("no"))
-                break;
-            
+                break;           
         } while (true);
         
-        for (Alumno alumno : alumnos) {
+        
+        for (Alumno alumno : as.getAlumnos()) {
             System.out.println(alumno.toString());
         }
         
         System.out.println("Ingrese un alumno");
-        String nombre = leer.next();
-        for (Alumno alumno : alumnos) {
-            if(alumno.getNombre().equalsIgnoreCase(nombre))
-                System.out.println(as.notaFinal(alumno));
-        }
+        String nombre = leer.next(); // pepe
         
+        for (Alumno alumno : as.getAlumnos()) {
+            if(alumno.getNombre().equalsIgnoreCase(nombre)){
+                System.out.println(as.notaFinal(alumno.getNotas()));
+            }    
+        }
+         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }

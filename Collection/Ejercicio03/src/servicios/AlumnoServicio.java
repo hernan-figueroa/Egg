@@ -14,9 +14,17 @@ import java.util.Scanner;
  * @author Hernan
  */
 public class AlumnoServicio {
+    private ArrayList<Alumno> alumnos = new ArrayList<>();
     Scanner leer = new Scanner(System.in).useDelimiter("\n");
+
+    public ArrayList<Alumno> getAlumnos() {
+        return alumnos;
+    }
     
-    public Alumno crearAlumno(){
+    
+    
+    
+    public void crearAlumno(){
         ArrayList<Integer> notas = new ArrayList<>();
         String nombre;
         
@@ -26,14 +34,15 @@ public class AlumnoServicio {
             System.out.println("Ingrese la nota numero "+(i+1));
             notas.add(leer.nextInt());
         }
-        return new Alumno(nombre, notas);     
+        alumnos.add( new Alumno(nombre, notas));
     }
     
-    public float notaFinal(Alumno a){
-        float sumatoria=0;
-        for (Integer nota : a.getNotas()) {
-            sumatoria+=nota;
+   
+    public float notaFinal(ArrayList<Integer> notas){ // pepe 1 2 10
+        int suma=0;
+        for (Integer nota : notas) {
+            suma+=nota;
         }
-        return sumatoria/a.getNotas().size();
-    }
+        return suma/notas.size();
+    }    
 }
