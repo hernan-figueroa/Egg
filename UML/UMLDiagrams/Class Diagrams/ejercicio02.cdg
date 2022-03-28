@@ -75,9 +75,9 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="entidades.Juego" target="entidades.RevolverDeAgua" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="jugadores" source="entidades.Juego" target="entidades.Jugador" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Jugador&gt;"/>
+    <HasRelation name="Revolver" source="entidades.Juego" target="entidades.RevolverDeAgua" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <UseRelation source="entidades.Juego" target="entidades.Jugador" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="revolver" source="entidades.Juego" target="entidades.RevolverDeAgua" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Jugador" source="entidades.Juego" target="entidades.Jugador" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation source="entidades.Juego" target="entidades.RevolverDeAgua" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

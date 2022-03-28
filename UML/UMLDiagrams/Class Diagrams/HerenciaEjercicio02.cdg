@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="entidades">
+  <ClassDiagramComponents>
+    <Class name="Electrodomestico" package="entidades" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="precio" type="Float" visibility="protected"/>
+        <Field name="color" type="Color" visibility="protected"/>
+        <Field name="tipoConsumo" type="Consumo" visibility="protected"/>
+        <Field name="peso" type="Float" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Float" name="precio"/>
+          <Argument type="Color" name="color"/>
+          <Argument type="Consumo" name="tipoConsumo"/>
+          <Argument type="Float" name="peso"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPrecio" returnType="Float" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="Float" name="precio"/>
+        </Method>
+        <Method name="getColor" returnType="Color" visibility="public"/>
+        <Method name="setColor" returnType="void" visibility="public">
+          <Argument type="Color" name="color"/>
+        </Method>
+        <Method name="getTipoConsumo" returnType="Consumo" visibility="public"/>
+        <Method name="setTipoConsumo" returnType="void" visibility="public">
+          <Argument type="Consumo" name="tipoConsumo"/>
+        </Method>
+        <Method name="getPeso" returnType="Float" visibility="public"/>
+        <Method name="setPeso" returnType="void" visibility="public">
+          <Argument type="Float" name="peso"/>
+        </Method>
+        <Method name="comprobarConsumoEnergetico" returnType="Consumo" visibility="private">
+          <Argument type="Consumo" name="tipoConsumo"/>
+        </Method>
+        <Method name="comprobarColor" returnType="Color" visibility="private">
+          <Argument type="Color" name="color"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Lavadora" package="entidades" visibility="public" xPosition="590.0" yPosition="20.0">
+      <Fields>
+        <Field name="carga" type="Float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Float" name="precio"/>
+          <Argument type="Color" name="color"/>
+          <Argument type="Consumo" name="tipoConsumo"/>
+          <Argument type="Float" name="peso"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Float" name="carga"/>
+          <Argument type="Float" name="precio"/>
+          <Argument type="Color" name="color"/>
+          <Argument type="Consumo" name="tipoConsumo"/>
+          <Argument type="Float" name="peso"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCarga" returnType="Float" visibility="public"/>
+        <Method name="setCarga" returnType="void" visibility="public">
+          <Argument type="Float" name="carga"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Televisor" package="entidades" visibility="public" xPosition="744.0" yPosition="273.0">
+      <Fields>
+        <Field name="resolucion" type="Integer" visibility="private"/>
+        <Field name="sintonizador" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="resolucion"/>
+          <Argument type="Boolean" name="sintonizador"/>
+          <Argument type="Float" name="precio"/>
+          <Argument type="Color" name="color"/>
+          <Argument type="Consumo" name="tipoConsumo"/>
+          <Argument type="Float" name="peso"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getResolucion" returnType="Integer" visibility="public"/>
+        <Method name="setResolucion" returnType="void" visibility="public">
+          <Argument type="Integer" name="resolucion"/>
+        </Method>
+        <Method name="getSintonizador" returnType="Boolean" visibility="public"/>
+        <Method name="setSintonizador" returnType="void" visibility="public">
+          <Argument type="Boolean" name="sintonizador"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="entidades.Lavadora" target="entidades.Electrodomestico"/>
+    <IsRelation name="is" source="entidades.Televisor" target="entidades.Electrodomestico"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -6,6 +6,7 @@
 package ejercicio03;
 
 import entidades.Baraja;
+import entidades.Carta;
 import service.BarajaService;
 
 /**
@@ -29,7 +30,14 @@ public class Ejercicio03 {
         bj.mostrarBaraja(b);
         
         System.out.println("------------- siguiente carta --------------");
-        System.out.println(bj.siguienteCarta(b).toString());
+        for (int i = 0; i < 41; i++) {
+            Carta carta = bj.siguienteCarta(b);
+            if(carta == null)
+                System.out.println("No hay mas cartas");
+            else
+            System.out.println(carta.toString());
+        }
+        
         
         System.out.println("------------- mazo actual --------------");
         bj.mostrarBaraja(b);

@@ -52,13 +52,15 @@ public class BarajaService {
     }
 
     public Carta siguienteCarta(Baraja b) {
-         Carta carta;
-        if (b.getCartas().get(0) == null) {
+        Carta carta;
+        if (b.getCartas().isEmpty()) {
             carta = null;
+        } else {
+
+            carta = b.getCartas().get(0);
+            b.getCartas().remove(0);
+            cartasQueSalieron.add(carta);
         }
-        carta = b.getCartas().get(0);
-        b.getCartas().remove(0);
-        cartasQueSalieron.add(carta);
         return carta;
     }
 

@@ -15,7 +15,6 @@ Nota: encontrarán en Moodle un ejemplo de una Colección como Atributo.
 package ejercicio03;
 
 import entidades.Alumno;
-import java.util.ArrayList;
 import java.util.Scanner;
 import servicios.AlumnoServicio;
 
