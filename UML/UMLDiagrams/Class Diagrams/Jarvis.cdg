@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Jarvis">
+  <ClassDiagramComponents>
+    <Class name="Armadura" package="" visibility="public" xPosition="20.0" yPosition="31.0">
+      <Fields>
+        <Field name="primario" type="Color" visibility="private"/>
+        <Field name="secundario" type="Color" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="Color" package="" visibility="public" xPosition="227.0" yPosition="55.0">
+      <Literals/>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

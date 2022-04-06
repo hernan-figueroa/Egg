@@ -77,4 +77,10 @@ public class Electrodomestico {
         }
         return Color.BLANCO;
     }
+
+    @Override
+    public String toString() {
+        return "Electrodomestico{" + "precio=" + precio + ", color=" + color + ", tipoConsumo=" + tipoConsumo + ", peso=" + peso + '}';
+    }
+    
 }

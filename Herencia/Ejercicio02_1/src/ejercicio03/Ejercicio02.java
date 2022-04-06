@@ -49,14 +49,18 @@ public class Ejercicio02 {
         electrodomesticos.add(lavadora3);
         electrodomesticos.add(televisor);
         
+        
         for (Electrodomestico electrodomestico : electrodomesticos) {
             if(electrodomestico instanceof Lavadora){
+                
                 System.out.println("Precio de lavadora: " + ls.precioFinal((Lavadora) electrodomestico));
                 totalLavadoras +=ls.precioFinal((Lavadora) electrodomestico);
+                System.out.println(electrodomestico.toString());
             }
             if(electrodomestico instanceof Televisor){
                 System.out.println("Precio de Televisor: " + ts.precioFinal((Televisor) electrodomestico));
                 totalTelevisores +=ts.precioFinal((Televisor) electrodomestico);
+                System.out.println(electrodomestico.toString());
             }
         }
         

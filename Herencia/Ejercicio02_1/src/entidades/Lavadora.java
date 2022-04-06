@@ -30,6 +30,13 @@ public class Lavadora extends Electrodomestico{
     public void setCarga(Float carga) {
         this.carga = carga;
     }
+
+    @Override
+    public String toString() {
+        
+        return "Lavadora{" + super.toString() + "carga=" + carga + '}';
+    }
+    
     
     
 }

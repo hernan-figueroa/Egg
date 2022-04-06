@@ -21,7 +21,7 @@ public class AlquilerServicio {
     Scanner leer = new Scanner(System.in).useDelimiter("\n");
     BarcoServicio bs = new BarcoServicio();
     
-    public Alquiler CrearAlquiler(){
+    public Alquiler CrearAlquiler(Barco barco){
         System.out.println("Ingrese un nombre");
         String nombre = leer.next();
         System.out.println("Ingrese el DNI");
@@ -41,9 +41,21 @@ public class AlquilerServicio {
         System.out.println("Ingrese la posicion del amarre");
         String posAmarre = leer.next();
         
-        Barco barco = bs.crearBarco();
-        
         return new Alquiler(nombre, dni, fechaAlquiler, fechaDevolucion, posAmarre, barco); 
     }
-        
+    
+    public Double costoAlquiler(Alquiler alquiler){
+        Double total = 0.0;
+        int milisecondsByDay = 86400000;
+        int dias = (int) (alquiler.getFechaDevolucion().getTime()-alquiler.getFechaAlquiler().getTime())/milisecondsByDay;
+        if(alquiler.getBarco() instanceof Velero){
+            System.out.println(alquiler.getBarco().getEslora());
+            total += dias * alquiler.getBarco().getEslora()*10;
+        }else if(alquiler.getBarco() instanceof Yate){
+            total += dias * alquiler.getBarco().getEslora();
+        }else if(alquiler.getBarco() instanceof BarcoAMotor){
+            total += dias * alquiler.getBarco().getEslora();
+        }
+        return total;
+    }
 }

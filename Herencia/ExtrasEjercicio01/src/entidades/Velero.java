@@ -24,4 +24,11 @@ public class Velero extends Barco{
     public void setVelas(Integer velas) {
         this.velas = velas;
     }
+
+    @Override
+    public String toString() {
+        super.toString();
+        return "Velero{" + "velas=" + velas + '}';
+    }     
+    
 }

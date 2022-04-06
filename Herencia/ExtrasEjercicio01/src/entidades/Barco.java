@@ -46,6 +46,12 @@ public class Barco {
     public void setAnioFabricacion(Integer anioFabricacion) {
         this.anioFabricacion = anioFabricacion;
     }
+
+    @Override
+    public String toString() {
+        return "Barco{" + "matricula=" + matricula + ", eslora=" + eslora + ", anioFabricacion=" + anioFabricacion + '}';
+    }
+    
     
     
 }

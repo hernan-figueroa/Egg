@@ -25,5 +25,11 @@ public class Yate extends BarcoAMotor{
     public void setNumCamarote(Integer numCamarote) {
         this.numCamarote = numCamarote;
     }
+
+    @Override
+    public String toString() {
+        super.toString();
+        return "Yate{" + "numCamarote=" + numCamarote + '}';
+    }
     
 }

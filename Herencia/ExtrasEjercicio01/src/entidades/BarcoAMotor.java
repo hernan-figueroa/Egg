@@ -24,6 +24,12 @@ public class BarcoAMotor extends Barco{
     public void setCv(Double cv) {
         this.cv = cv;
     }
+
+    @Override
+    public String toString() {
+        super.toString();
+        return "BarcoAMotor{" + "cv=" + cv + '}';
+    }
     
     
 }
