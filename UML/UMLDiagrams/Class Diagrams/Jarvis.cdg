@@ -2,17 +2,40 @@
 
 <ClassDiagram name="Jarvis">
   <ClassDiagramComponents>
-    <Class name="Armadura" package="" visibility="public" xPosition="20.0" yPosition="31.0">
+    <Class name="Armadura" package="" visibility="public" xPosition="46.0" yPosition="18.0">
       <Fields>
         <Field name="primario" type="Color" visibility="private"/>
         <Field name="secundario" type="Color" visibility="private"/>
+        <Field name="botaR" type="Bota" visibility="private"/>
+        <Field name="botaL" type="Bota" visibility="private"/>
+        <Field name="guanteR" type="Guante" visibility="private"/>
+        <Field name="guanteL" type="Guante" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Enum name="Color" package="" visibility="public" xPosition="227.0" yPosition="55.0">
+    <Enum name="Color" package="" visibility="public" xPosition="277.0" yPosition="18.0">
       <Literals/>
     </Enum>
+    <Class name="Bota" package="" visibility="public" xPosition="338.0" yPosition="113.0">
+      <Fields>
+        <Field name="energia" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Guante" package="" visibility="public" xPosition="338.0" yPosition="246.0">
+      <Fields>
+        <Field name="energia" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Casco" package="" visibility="public" xPosition="66.0" yPosition="246.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations/>
 </ClassDiagram>
