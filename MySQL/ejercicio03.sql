@@ -123,4 +123,19 @@ select * from producto;
 #Subconsultas con IN y NOT IN
 
 #1
-	
+	select nombre from fabricante
+    where codigo in (select distinct codigo_fabricante from producto);
+    
+#2
+	select nombre from fabricante
+    where codigo not in (select distinct codigo_fabricante from producto);
+    
+#Subconsultas (En la cláusula HAVING)
+
+#1
+	select producto.codigo_fabricante, fabricante.nombre from producto
+    inner join fabricante
+    on producto.codigo_fabricante = fabricante.codigo
+    group by codigo_fabricante
+    having count(producto.codigo) = (select count(codigo) from producto where codigo_fabricante = 2);
+    

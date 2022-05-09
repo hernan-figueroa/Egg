@@ -64,16 +64,18 @@ order by sal_emp asc limit 1)
 
 select id_depto,avg(sal_emp) as promedio  from empleados
 group by id_depto;
-
+#24
 select id_depto as departamento,count(id_emp) as empleados from empleados 
 group by id_depto 
-having empleados>3;
+having empleados>2;
 
+#26
 select empleados.id_depto as departamento,count(id_emp) as empleados from empleados
 right join departamentos
 on empleados.id_depto = departamentos.id_depto
 group by empleados.id_depto 
 having empleados=0;
+
 
 select * from empleados 
 where sal_emp >= (select avg(sal_emp) from empleados)
