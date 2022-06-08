@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registrar un usuario</h1>
+    <section>
+        <div>
+            <form action="/controlador-registro" method="post" class="form-registro" enctype="multipart/form">
+                <div>
+                    <label for="nombre">Nombre del usuario</label><br>
+                    <input name="nombre" type="text" placeholder="Nombre y apellido" required>
+                </div>
+                <div>
+                    <label for="contrasenia"></label>
+                    <input name="contrasenia" type="password" placeholder="tu password" required>
+                </div>
+                <div>
+                    <label for="edad">Edad del usuario</label><br>
+                    <input name="edad" type="number" placeholder="21" required>
+                </div>
+                <div>
+                    <label for="date">Fecha de nacimiento del usuario</label><br>
+                    <input name="date" type="date">
+                </div>
+
+                <div>
+                    <h3>Sexo del usuario</h3>
+                    
+                    <label for="Mujer">
+                        <input name="sexo" type="radio" id = "Mujer" checked>Mujer
+                    </label><br>
+                    <label for="Hombre">
+                        <input name="sexo" type="radio" id = "Hombre">Hombre
+                    </label><br>
+                    <label for="Otros">
+                        <input name="sexo" type="radio" id = "Otros">Prefero no decir
+                    </label><br>
+                </div>
+                <div>
+                    <label for="pais">Pais de nacimiento del usuario</label><br>
+                    <select name="pais">
+                        <option value="arg">Uruguay</option>
+                        <option value="arg" selected>Argentina</option>
+                        <option value="bra">Brasil</option>
+                        <option value="chi">Chile</option>
+                    </select>
+                </div>
+                <button type="submit">Enviar</button>
+                <button type="reset">Borrar</button>
+
+            </form>
+        </div>
+    </section>
+</body>
+</html>
