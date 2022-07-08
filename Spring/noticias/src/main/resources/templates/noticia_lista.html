@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <!--
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+    -->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Biblioteca Egg</title> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    </head>
+        
+    <body>
+    <div class="container">
+     <table class="table table-light">
+       <thead>
+        <tr>
+          <th scope="col">Id de la noticia</th>
+          <th scope="col">Titulo</th>
+          <th scope="col" class="text-center">Acciones</th>
+        
+        </tr>
+       </thead>
+       <tbody th:each = "noticia : ${noticias}">
+        <tr>
+          <th scope="row" th:text = "${noticia.id}"></th>
+          <td scope="row" th:text = "${noticia.titulo}"></td>
+          <td scope="row" class="text-center">
+              <a th:href = "@{/noticia/modificar/__${noticia.id}__}"><i class="fas fa-feather-alt"></i>Modificar</a>
+              <a th:href = "@{/noticia/eliminado/__${noticia.id}__}"><i class="fas fa-feather-alt"></i>eliminar</a>
+          </td>
+        </tr>
+       </tbody> 
+     </table> 
+    </div>
+        
+
+</html>
