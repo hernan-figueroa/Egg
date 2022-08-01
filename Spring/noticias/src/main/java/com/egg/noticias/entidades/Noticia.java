@@ -10,6 +10,9 @@ package com.egg.noticias.entidades;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -17,50 +20,18 @@ import org.hibernate.annotations.GenericGenerator;
  * @author Hernan
  */
 @Entity
+@Data
 public class Noticia {
-    
+
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid" , strategy = "uuid2" )
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String titulo;
     private String cuerpo;
     private String foto;
 
-    public Noticia() {
-    }
+     @ManyToOne
+    private Usuario creador;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getCuerpo() {
-        return cuerpo;
-    }
-
-    public void setCuerpo(String cuerpo) {
-        this.cuerpo = cuerpo;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-    
-    
 }

@@ -11,16 +11,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Biblioteca Egg</title> 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="/estilos.css">
     </head>
     <body>
         <header>
-            <div class="container">
-                <nav class="navbar navbar-dark bg-dark">
-                    <a class="navbar-brand" th:href="@{/inicio}">HOME</a>
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg navbar-light" id="barraDeNav">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <div class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Noticias
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" th:href="@{/inicio}">Ver noticias</a></li>
+                                        <li><a sec:authorize="hasAnyRole('ADMIN','PERIODISTA')" class="dropdown-item" th:href="@{/noticia/crear}">Crear</a></li>
+                                        <li><a sec:authorize="hasAnyRole('ADMIN','PERIODISTA')" class="dropdown-item" th:href="@{/noticia/lista}">Editar</a></li>
+                                    </ul>
+                                </div>
+                                <a class="nav-link" th:href="@{/logout}">Cerrar Session</a>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </header>
-        <div class="container">
+        <div class="container-fluid">
             <div class="card-group justify-content-center">
                 <div class="card" style="max-width: 800px;margin: 15px;border-radius: 5px;">
                     <img class="card-img-top" th:src="@{'/'+${noticia.foto}}" alt="Card image cap" style="border-radius: 5px;">
@@ -31,5 +48,6 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     </body>
 </html>

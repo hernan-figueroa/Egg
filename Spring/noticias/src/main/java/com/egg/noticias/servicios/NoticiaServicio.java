@@ -6,6 +6,7 @@
 package com.egg.noticias.servicios;
 
 import com.egg.noticias.entidades.Noticia;
+import com.egg.noticias.entidades.Usuario;
 import com.egg.noticias.excepciones.MiException;
 import com.egg.noticias.repositorios.NoticiaRepositorio;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class NoticiaServicio {
     public NoticiaRepositorio noticiaRepositorio;
 
     @Transactional
-    public void crearNoticia(String titulo, String cuerpo, String foto) throws MiException {
+    public void crearNoticia(String titulo, String cuerpo, String foto,Usuario creador) throws MiException {
 
         validar(titulo, cuerpo, foto);
 
@@ -34,6 +35,7 @@ public class NoticiaServicio {
         noticia.setTitulo(titulo);
         noticia.setCuerpo(cuerpo);
         noticia.setFoto(foto);
+        noticia.setCreador(creador);
 
         noticiaRepositorio.save(noticia);
     }
@@ -51,7 +53,7 @@ public class NoticiaServicio {
     }
 
     @Transactional
-    public void modificar(String id, String titulo, String cuerpo, String foto) throws MiException {
+    public void modificar(String id, String titulo, String cuerpo, String foto,Usuario creador) throws MiException {
         validar(titulo, cuerpo, foto);
 
         Optional<Noticia> respuesta = noticiaRepositorio.findById(id);
@@ -61,6 +63,7 @@ public class NoticiaServicio {
             noticia.setCuerpo(cuerpo);
             noticia.setFoto(foto);
             noticia.setTitulo(titulo);
+            noticia.setCreador(creador);
 
             noticiaRepositorio.save(noticia);
         }

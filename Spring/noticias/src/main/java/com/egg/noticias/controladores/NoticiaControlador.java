@@ -5,13 +5,14 @@
  */
 package com.egg.noticias.controladores;
 
-
 import com.egg.noticias.entidades.Noticia;
+import com.egg.noticias.entidades.Usuario;
 import com.egg.noticias.excepciones.MiException;
 import com.egg.noticias.repositorios.NoticiaRepositorio;
 import com.egg.noticias.servicios.NoticiaServicio;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,85 +38,54 @@ public class NoticiaControlador {
     public String crear() {
         return "noticia_crear.html";
     }
-    
-    
-    
+
+    @GetMapping("/eliminado/{id}")
+    public String eliminado(@PathVariable String id, ModelMap modelo) {
+
+        try {
+            noticiaServicio.eliminar(id);
+            //para que la lista la cargue de nuevo
+            List<Noticia> noticias = noticiaServicio.noticias();
+            modelo.addAttribute("noticias", noticias);
+            ///
+        } catch (MiException ex) {
+            System.out.println("No se pudo eliminar");
+        }
+        return "noticia_lista.html";
+    }
+
+    @GetMapping("/lista")
+    public String lista(ModelMap modelo) {
+
+        List<Noticia> noticias = noticiaServicio.noticias();
+        modelo.addAttribute("noticias", noticias);
+
+        return "noticia_lista.html";
+    }
+
+    @GetMapping("/modificar/{id}")
+    public String modificar(@PathVariable String id, ModelMap modelo) {
+        modelo.put("noticia", noticiaServicio.buscarId(id));
+        return "noticia_modificar.html";
+    }
+
+    @GetMapping("/detalleNoticia/{id}")
+    public String detalleNoticia(@PathVariable String id, ModelMap modelo) {
+        modelo.addAttribute("noticia", noticiaServicio.buscarId(id));
+        return "noticia_detalle.html";
+    }
 
     @PostMapping("/creado")
     public String creado(@RequestParam String titulo,
             @RequestParam String cuerpo,
-            @RequestParam String foto, ModelMap modelo) {
-        
+            @RequestParam String foto, ModelMap modelo, HttpSession session) {
         try {
-            noticiaServicio.crearNoticia(titulo,cuerpo,foto);
+            Usuario logueado = (Usuario) session.getAttribute("usuarioSesion");
+            noticiaServicio.crearNoticia(titulo, cuerpo, foto, logueado);
             modelo.put("exito", "La noticia fue cargada correctamente");
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
         }
-        return "noticia_crear.html";  
-    }
-        
-    @GetMapping("/eliminado/{id}")
-    public String eliminado(@PathVariable String id,ModelMap modelo) {
-        
-        try {
-            noticiaServicio.eliminar(id);     
-            //para que la lista la cargue de nuevo
-            List<Noticia> noticias = noticiaServicio.noticias();
-            modelo.addAttribute("noticias",noticias);
-            ///
-        } catch (MiException ex) {
-            System.out.println("No se pudo eliminar"); 
-        }
-        return "noticia_lista.html";    
-    }
-    
-    @GetMapping("/eliminar")
-    public String eliminar() {
-        return "noticia_eliminar.html";
-    }
-    
-    @PostMapping("/eliminado")
-    public String eliminadoPorUsuario(@RequestParam String id,ModelMap modelo) {
-        try {
-            noticiaServicio.eliminar(id);
-            modelo.put("exito", "La noticia fue eliminada correctamente");
-        }catch(MiException ex){
-            modelo.put("error", ex.getMessage()); 
-        }
-        return "noticia_eliminar.html";   
-    }
-    
-    @GetMapping("/lista")
-    public String lista(ModelMap modelo) {
-        
-        List<Noticia> noticias = noticiaServicio.noticias();
-        modelo.addAttribute("noticias",noticias);
-        
-        return "noticia_lista.html";
-    }
-    
-    @GetMapping("/modificar/{id}")
-    public String modificar(@PathVariable String id,ModelMap modelo) {
-        modelo.put("noticia", noticiaServicio.buscarId(id));
-        return "noticia_modificar.html";
-    }
-    
-    @PostMapping("/modifico/{id}")
-    public String modificar(@PathVariable String id , String titulo ,String cuerpo, String foto, ModelMap modelo){
-        try {
-            noticiaServicio.modificar(id, titulo, cuerpo, foto);
-            
-             return "redirect:../lista";
-        } catch (MiException ex) {
-            modelo.put("error", ex.getMessage());
-            return "noticia_modificar.html";
-        }
-    }
-    
-    @GetMapping("/ver/{id}")
-    public String detalleNoticia(@PathVariable String id,ModelMap modelo) {
-        modelo.addAttribute("noticia",noticiaServicio.buscarId(id));
-        return "noticia_detalle.html";
+        return "noticia_crear.html";
     }
 }
