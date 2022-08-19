@@ -12,6 +12,8 @@ import com.egg.noticias.repositorios.NoticiaRepositorio;
 import com.egg.noticias.servicios.NoticiaServicio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +69,20 @@ public class NoticiaControlador {
     public String modificar(@PathVariable String id, ModelMap modelo) {
         modelo.put("noticia", noticiaServicio.buscarId(id));
         return "noticia_modificar.html";
+    }
+    
+    @PostMapping("/modifico/{id}")
+    public String modifico(@PathVariable String id, @RequestParam String titulo,
+            @RequestParam String cuerpo,
+            @RequestParam String foto,
+            HttpSession session) {
+        Usuario creador = (Usuario) session.getAttribute("usuarioSesion");
+        try {
+            noticiaServicio.modificar(id, titulo, cuerpo, foto, creador);
+        } catch (MiException ex) {
+            Logger.getLogger(NoticiaControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return "noticia_lista.html";
     }
 
     @GetMapping("/detalleNoticia/{id}")
